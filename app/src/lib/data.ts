@@ -43,6 +43,11 @@ export async function getIssueActivity(id: string) {
   return Array.isArray(data) ? data : (data?.items || []);
 }
 
+export async function getIssueComments(id: string) {
+  const data = await paperclipFetch<any>(`/issues/${id}/comments`);
+  return Array.isArray(data) ? data : (data?.items || []);
+}
+
 export async function getProjects() {
   const data = await paperclipFetch<any>(`/companies/${config.companyId}/projects`);
   return Array.isArray(data) ? data : (data?.items || []);
